@@ -3,6 +3,10 @@ steps:
     command: |
       echo "Building abc.sh"
     key: build
+    notify:
+       - email: "athreya@buildkite.com"
+         if: job.state == "passed" || job.state == "failed"
+ 
 
   - label: ":white_check_mark: Test"
     command: "echo 'Test the rocket'"
