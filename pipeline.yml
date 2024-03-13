@@ -1,0 +1,26 @@
+steps:
+  - label: ":rocket: Build"
+    command: |
+      echo "Building abc.sh"
+    key: build
+
+  - label: ":white_check_mark: Test"
+    command: "echo 'Test the rocket'"
+    key: test
+    depends_on: build
+
+  - label: ":rocket: Deploy"
+    command: "echo 'Launch the rocket'"
+    key: deploy
+    depends_on: test
+
+  - label: ":rocket: Get metadata from another build"
+    command: |
+      echo $BUILDKITE_BUILD_ID
+      echo "Get metadata from another build"    
+      buildkite-agent meta-data get "foo" --build 018e1f76-8626-4a76-a9a9-90c8b4169eb4
+  
+
+  - trigger: aws-elastic-ci-stack-2
+    label: ":rocket: Deploy event trigger"
+    branches: main
