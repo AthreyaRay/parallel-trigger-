@@ -4,7 +4,7 @@ steps:
       echo "Building abc.sh"
     key: build
     notify:
-       - email: "athreya@buildkite.com"
+       - slack: "@athreya"
          if: job.state == "passed" || job.state == "failed"
  
 
