@@ -14,7 +14,7 @@ steps:
     depends_on: build
 
   - label: ":rocket: Deploy"
-    command: "echo 'Launch the rocket'"
+    command: "ech 'Launch the rocket'"
     notify:
        - slack: "@athreya"
     key: deploy
