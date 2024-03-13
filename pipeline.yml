@@ -5,7 +5,7 @@ steps:
     key: build
     notify:
        - slack: "@athreya"
-         if: job.state == "passed" || job.state == "failed"
+         
  
 
   - label: ":white_check_mark: Test"
@@ -15,6 +15,8 @@ steps:
 
   - label: ":rocket: Deploy"
     command: "echo 'Launch the rocket'"
+    notify:
+       - slack: "@athreya"
     key: deploy
     depends_on: test
 
