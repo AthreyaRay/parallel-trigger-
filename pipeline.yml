@@ -1,14 +1,13 @@
 steps:
   - label: ":rocket: Build"
     command: echo "Building abc.sh"
-    key: 'build'
+    key: 'one'
 
   - wait:
     continue_on_failure: true
 
   - label: "Evaluate and Set Pipeline"
-     command: |
-        - "./test-script.sh | buildkite-agent pipeline upload"
+     command: ./test-script.sh | buildkite-agent pipeline upload
 
   - label: ":white_check_mark: Test"
     command: "echo 'Test the rocket'"

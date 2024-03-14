@@ -1,6 +1,6 @@
 #!/bin/bash
 
-step_result=$(buildkite-agent step get "outcome" --step "build")
+step_result=$(buildkite-agent step get "outcome" --step "one")
 
 if [ "$step_result" = "passed" ]; then
     cat <<YAML
