@@ -5,7 +5,7 @@ steps:
     key: build
     notify:
        - slack: "@athreya"
-         
+         if: "job.state == 'passed'"
  
 
   - label: ":white_check_mark: Test"
