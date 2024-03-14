@@ -11,12 +11,12 @@ steps:
     notify:
       - email: "athreya@buildkite.com"
 YAML
-else
-    cat <<YAML
-steps:
-  - command: "echo 'It failed'"
-    notify:
-      - email: "athreya@buildkite.com"
-YAML
+#else
+#    cat <<YAML
+#steps:
+#  - command: "echo 'It failed'"
+#    notify:
+#      - email: "athreya@buildkite.com"
+#YAML
 fi
 
