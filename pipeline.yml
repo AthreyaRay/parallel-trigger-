@@ -2,7 +2,7 @@ steps:
   - label: ":rocket: Build"
     command: |
       echo "Building abc.sh"
-    key: build
+    key: 'build'
  
   - label: "Evaluate and Set Pipeline"
       commands:
