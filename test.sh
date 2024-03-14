@@ -1,4 +1,6 @@
 #!/bin/bash
+set -eo pipefail
+set -x
 
 step_result=$(buildkite-agent step get "outcome" --step "one")
 
