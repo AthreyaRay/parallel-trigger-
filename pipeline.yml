@@ -1,34 +1,35 @@
 steps:
-  - label: ":rocket: Build"
-    command: "echo 'Building abc.sh'"
-    key: 'one'
+- label: ":rocket: Build"
+  command: "echo 'Building abc.sh'"
+  key: 'one'
 
-  - wait: ~
-    continue_on_failure: true
+- wait: ~
+  continue_on_failure: true
 
-  - label: "Evaluate and Set Pipeline"
-    command: "./test.sh | buildkite-agent pipeline upload"
-    # Ensure this line is properly indented
+- label: "Evaluate and Set Pipeline"
+  command: "./test.sh | buildkite-agent pipeline upload"
+  # Ensure this line is properly indented
 
-  - label: ":white_check_mark: Test"
-    command: "echo 'Test the rocket'"
-    key: "test"
-    depends_on: "one"
+- label: ":white_check_mark: Test"
+  command: "echo 'Test the rocket'"
+  key: "test"
+  depends_on: "one"
 
-  - label: ":rocket: Deploy"
-    command: "echo 'Launch the rocket'"
-    notify:
-      - slack: "@athreya"
-    key: "deploy"
-    depends_on: "test"
+- label: ":rocket: Deploy"
+  command: "echo 'Launch the rocket'"
+  notify:
+  # Notifying to support_test_account workspace and channek training-and-testing in that workspace
+  - slack: "Support_test_account#training-and-testing"
+  key: "deploy"
+  depends_on: "test"
 
-  - label: ":rocket: Get metadata from another build"
-    command: |
-      echo $BUILDKITE_BUILD_ID
-      echo "Get metadata from another build"
-      buildkite-agent meta-data get "foo" --build 018e1f76-8626-4a76-a9a9-90c8b4169eb4
+- label: ":rocket: Get metadata from another build"
+  command: |
+    echo $BUILDKITE_BUILD_ID
+    echo "Get metadata from another build"
+    buildkite-agent meta-data get "foo" --build 018e1f76-8626-4a76-a9a9-90c8b4169eb4
 
-  - trigger: "aws-elastic-ci-stack-2"
-    label: ":rocket: Deploy event trigger"
-    branches: "main"
+- trigger: "aws-elastic-ci-stack-2"
+  label: ":rocket: Deploy event trigger"
+  branches: "main"
 
