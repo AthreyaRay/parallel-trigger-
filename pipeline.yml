@@ -23,6 +23,10 @@ steps:
   key: "deploy"
   depends_on: "test"
 
+
+# - label: ":danger: Terminating agents after use"
+#   command: "./agentkil.sh"
+
 - label: ":rocket: Get metadata from another build"
   command: |
     echo $BUILDKITE_BUILD_ID
@@ -34,7 +38,7 @@ steps:
 #   branches: "main"
 #   key: 'trigger'
 
--label: ":danger: Terminating agents after use"
-command: "./agentkil.sh"
+- label: ":danger: Terminating agents after use"
+  command: "./agentkil.sh"
 # key: 'kill'
 # depends_on: "trigger"
