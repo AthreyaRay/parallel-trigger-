@@ -32,4 +32,8 @@ steps:
 - trigger: "pipeline-1"
   label: ":rocket: Deploy event trigger"
   branches: "main"
+  key: "trigger"
 
+-label : ":danger: Terminating agents after use"
+  command: "./agentkil.sh"
+  depends_on: "trigger"
