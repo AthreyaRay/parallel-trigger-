@@ -29,12 +29,12 @@ steps:
     echo "Get metadata from another build"
     buildkite-agent meta-data get "foo" --build 018e1f76-8626-4a76-a9a9-90c8b4169eb4
 
-- trigger: "pipeline-1"
-  label: ":rocket: Deploy event trigger"
-  branches: "main"
-  key: 'trigger'
+# - trigger: "pipeline-1"
+#   label: ":rocket: Deploy event trigger"
+#   branches: "main"
+#   key: 'trigger'
 
 -label: ":danger: Terminating agents after use"
 command: "./agentkil.sh"
-key: 'kill'
-depends_on: "trigger"
+# key: 'kill'
+# depends_on: "trigger"
