@@ -33,6 +33,5 @@ steps:
 #   label: ":rocket: Deploy event trigger"
 #   branches: "main"
 
-# -label : ":danger: Terminating agents after use"
-#   command: "./agentkil.sh"
-#   depends_on: "deploy"
+-label : ":danger: Terminating agents after use"
+  command: "./agentkil.sh"
